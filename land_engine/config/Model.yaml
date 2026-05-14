@@ -1,0 +1,96 @@
+### base config ###
+# -*- coding: utf-8 -*-
+full_field: &FULL_FIELD
+  loss: 'l2'
+  max_epochs: 200
+  batch_size: 32
+  num_data_workers: 4
+  dt: 1                   
+  n_history: 0             
+  prediction_type: 'iterative'
+  prediction_length: 41    
+  n_initial_conditions: 5  
+  ics_type: "default"      
+  date_strings: ["2018-09-14 00:00:00"]
+  save_raw_forecasts: !!bool True
+  save_channel: !!bool False
+  masked_acc: !!bool False
+  maskpath: None
+  perturb: !!bool False
+  add_grid: !!bool False
+  N_grid_channels: 0
+  gridtype: 'sinusoidal'    # options 'sinusoidal' or 'linear'
+  roll: !!bool False
+  enable_nhwc: !!bool False
+  optimizer_type: 'FusedAdam'
+
+  # directory path to store training checkpoints and other output
+  exp_dir: 'exp'
+
+ # data
+  train_data_path: '../data/land/train'
+  valid_data_path: '../data/land/valid'
+  test_data_path:  '../data/land/test'
+
+  train_data_path_forcing: '../data/atmos/train'
+  valid_data_path_forcing: '../data/atmos/valid'
+  test_data_path_forcing:  '../data/atmos/test'
+
+  # land mask
+  land_mask: !!bool False
+
+  # normalization
+  normalize: !!bool True
+  normalization: 'zscore' # options zscore, minmax, zscore_lat
+
+  global_means_path: '../data/land/mean.npy' 
+  global_stds_path:  '../data/land/std.npy' 
+  
+  global_means_path_forcing: '../data/atmos/mean_only_daily_data_1993_to_2017.npy' 
+  global_stds_path_forcing:  '../data/atmos/std_only_daily_data_1993_to_2017.npy' 
+
+  # orography
+  orography: !!bool False
+
+  # noise
+  add_noise: !!bool False
+  noise_std: 0
+
+  # crop
+  crop_size_x: None
+  crop_size_y: None
+
+  log_to_screen: !!bool True
+  log_to_wandb: !!bool True
+  save_checkpoint: !!bool True
+  plot_animations: !!bool False
+
+#############################################
+DSLCast: &DSLCast
+  <<: *FULL_FIELD
+  nettype: 'DSLCast'
+  log_to_wandb: !!bool True
+
+  # Train params
+  lr: 1E-3
+  batch_size: 32 
+  scheduler: 'CosineAnnealingLR'
+
+  loss_channel_wise: True #原来是True
+  loss_scale: False 
+  use_loss_scaler_from_metnet3: True #原来是True
+
+  loss_region_weighted: False
+
+  # Data params
+  fusion_3d_2d: False 
+  
+  forcing_channels: [65, 66, 67]
+
+  in_channels: [0, 1, 2, 3]
+
+  out_channels: [0, 1, 2, 3]
+
+  out_variables: ['stl1', 'stl2', 'stl3', 'stl4']
+  N_in_channels: 7 # 72
+  N_out_channels: 4 # 67
