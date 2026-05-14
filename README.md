@@ -2,7 +2,7 @@
 
  <div align="center">
  
-[![arXiv](https://img.shields.io/badge/PnP-Corrector-arXiv-red.svg)](https://arxiv.org/abs/2605.08935)
+[![arXiv](https://img.shields.io/badge/PnP-arXiv-red.svg)](https://arxiv.org/abs/2605.08935)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blue)](xx)
 
 </div>
@@ -73,7 +73,7 @@ Run the following script:
 inference.sh
 ```
 
-### Inference for Coupled Spatiotemporal Forecasting (Expanding Coupling Framework to More Spheres)
+### Inference for Expanding Coupling Framework to More Spheres
 
 Preparing the test data as follows:
 
