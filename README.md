@@ -283,8 +283,7 @@ Continue Update
 ## Citation
 
 ```
-@inproceedings{
-wu2026pnpcorrector,
+@inproceedings{wu2026pnpcorrector,
 title={PnP-Corrector: A Universal Correction Framework for Coupled Spatiotemporal Forecasting},
 author={Hao Wu and Fan Xu and Yuxu Lu and Penghao Zhao and Fan Zhang and Hao Jia and Yuxuan Liang and Ruijian Gou and Qingsong Wen and Xian Wu and Xiaomeng Huang and Yuan Gao},
 booktitle={Forty-third International Conference on Machine Learning},
